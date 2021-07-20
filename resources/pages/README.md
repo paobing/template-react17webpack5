@@ -1,0 +1,3 @@
+## pages folder
+
+> Used to
