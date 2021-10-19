@@ -78,6 +78,7 @@ const providerPlugin = () => {
     let plugin;
 
     plugin = new webpack.ProvidePlugin({
+        process: "process/browser",
         $: "jquery",
         JQuery: "jquery",
         "window.jQuery": "jquery",
@@ -88,6 +89,17 @@ const providerPlugin = () => {
     })
 
     return plugin;
+}
+
+/* DefinePlugin，便于环境参数传递 */
+const definePlugin  = (mode="development") => {
+    const ENV = {
+        development: "development",
+        production: "production"
+    };
+    return new webpack.DefinePlugin({
+        "process.env.NODE_ENV": JSON.stringify(ENV[mode])
+    })
 }
 
 /* 代码拆分依赖关系图  测试分析用 */
@@ -136,6 +148,7 @@ module.exports = (env, argv) => {
     plugins.push(...createHtmlPlugins());
     plugins.push(cssLoaderPlugin(hasHash=bol));
     plugins.push(providerPlugin());
+    plugins.push(definePlugin(argv.mode));
 
     bol && plugins.push(cleanPlugin());
     bol && plugins.push(bundlePlugin());
