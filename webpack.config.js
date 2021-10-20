@@ -21,8 +21,13 @@ const setConfig = (env, argv) => {
                 cacheGroups: {
                     vendor: {
                         chunks: "all",
-                        test: /[\\/]node_modules[\\/]/,
+                        test: /[\\/]node_modules[\\/][^antd]/,
                         name: "vendors"
+                    },
+                    antd: {
+                        chunks: "all",
+                        test: /[\\/]node_modules[\\/][antd]/,
+                        name: "antd"
                     },
                     commons: {
                         chunks: "all",

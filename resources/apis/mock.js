@@ -1,9 +1,9 @@
 import { mock } from "mockjs";
 
-mock("/system/list", 'post', {
-    "list|20-100": {
-        id: '@number',
-        name: '@string',
-        bugs: '@list'
-    }
+mock('/user/info', 'get', {
+    name: "@cname",
+    ip: "@ip",
+    "lists|20": [
+        {"id|+1": 1, name: "@name", "age|10-60": 1}
+    ]
 })

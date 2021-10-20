@@ -70,11 +70,12 @@ const modules = {
                             "@babel/preset-react",
                             {
                                 plugins: [
-                                    "@babel/plugin-proposal-class-properties",
+                                    // "@babel/plugin-proposal-class-properties", // 已在 ES2022，preset-react 中内置
                                     ["import", {
                                         libraryName: "antd",
                                         libraryDirectory: "lib",
-                                        style: "css"
+                                        // style: "css" // 使用.css文件
+                                        style: true // 使用.less文件
                                     }]
                                 ]
                             }

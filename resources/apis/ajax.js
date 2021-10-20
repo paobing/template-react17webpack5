@@ -26,8 +26,14 @@ axios.interceptors.response.use(function (config) {
         parent.window && parent.window.showLogin && parent.window.showLogin();
     }
 
-    return config;
+    return config.data;
 }, function (error) {
     // Do something with request error
     return Promise.reject(error);
 });
+
+export default class API {
+    static getUserList(){
+        return axios.get("/user/info");
+    }
+}
